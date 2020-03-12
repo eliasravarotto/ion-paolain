@@ -1,0 +1,47 @@
+<ion-header no-border>
+  <ion-toolbar>
+  	<ion-buttons slot="start">
+  		<ion-back-button defaultHref="/"></ion-back-button>
+  	</ion-buttons>
+    <ion-title>Movimiento</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+	<ion-grid>
+		<ion-col>
+			<ion-searchbar show-cancel-button="never" 
+						   placeholder="Buscar Cliente"
+						   (ionChange)="buscarCliente( $event )"
+						   [value]="clienteSelected.nombre"
+						   (ionClear)="limpiarClienteSelected()">
+			</ion-searchbar>
+			<ion-list *ngIf="!clienteSelected.nombre">
+			  <ion-item *ngFor=" let c of clientes | filtro: textoAbuscar: 'nombre'" button="true" (click)="selectCliente(c)">
+			  	<ion-label>
+			  		<h4>{{ c.nombre }}</h4>
+			  	</ion-label>
+			  </ion-item>
+			</ion-list>
+		</ion-col>
+		<ion-col *ngIf="clienteSelected.nombre">
+			<form #formulario="ngForm" (ngSubmit)="sendForm()">
+				<ion-list>
+					<ion-item>
+	  					<ion-label position="floating">Monto</ion-label>
+						<ion-input [(ngModel)]="movimiento.monto" name="monto" type="number" required></ion-input>
+					</ion-item>
+					<ion-item>
+				    	<ion-label>Tipo Movimiento</ion-label>
+				    	<ion-select interface="action-sheet" name="tipo_de_movimiento" [(ngModel)]="movimiento.tipo_movimiento" required>
+				      		<ion-select-option *ngFor="let tipo of tipos_de_movimientos" [value]="tipo.nombre">{{tipo.nombre}}</ion-select-option>
+				    	</ion-select>
+				  </ion-item>
+				</ion-list>
+				<ion-button type="submit">GUARDAR</ion-button>
+			</form>
+		</ion-col>
+	</ion-grid>
+
+</ion-content>

@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+  		<ion-back-button defaultHref="/"></ion-back-button>
+  	</ion-buttons>
+    <ion-title>Movimientos</ion-title>
+    <ion-button slot="end" fill="clear">
+    	<ion-icon name="add"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-grid>
+		<app-ultimos-movimientos limit="500"></app-ultimos-movimientos>
+	</ion-grid>
+</ion-content>

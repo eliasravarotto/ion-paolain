@@ -1,0 +1,26 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-title>Modal-abm-cliente</ion-title>
+    <ion-button slot="end" 
+    			fill="clear"
+    			(click)="cerrar()">
+    	<ion-icon name="close"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-grid>
+		<ion-col>
+			<form #formulario="ngForm" (ngSubmit)="guardarCliente()">
+				<ion-list>
+					<ion-item>
+						<ion-label position="floating">Nombre</ion-label>
+						<ion-input [(ngModel)]="nombre" name="nombre" type="text" required></ion-input>
+					</ion-item>
+				</ion-list>
+				<ion-button type="submit">GUARDAR</ion-button>
+			</form>
+		</ion-col>
+	</ion-grid>
+</ion-content>

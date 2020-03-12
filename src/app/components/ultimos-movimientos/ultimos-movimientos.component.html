@@ -1,0 +1,27 @@
+<ion-row>
+	<ion-col>
+
+		<ion-card>
+
+		    <ion-list>
+			  <ion-list-header>
+			    <ion-label>Últimos Movimientos</ion-label>
+			    <ion-button fill="clear" routerLink="/form-movimiento">
+			    	<ion-icon name="md-add"></ion-icon>
+			    </ion-button>
+			  </ion-list-header>
+			  <ion-item *ngFor=" let m of movimientos | async ">
+			  	<ion-label>
+			  		<h3>{{ m.tipo_movimiento }}</h3>
+			  		<p *ngIf="m.tipo_movimiento=='COMPRA' || m.tipo_movimiento=='PAGO'">
+			  			{{ m.cuenta_corriente.cliente.nombre }}
+			  		</p>
+			  	</ion-label>
+			  	<ion-label slot="end" text-right>$ {{ m.monto }}</ion-label>
+			  </ion-item>
+			</ion-list>
+
+		</ion-card>
+
+	</ion-col>
+</ion-row>
